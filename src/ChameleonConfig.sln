@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChameleonConfig", "ChameleonConfig\ChameleonConfig.csproj", "{7BF46FDF-0C85-4317-A609-495FAC9B3CE9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{63373319-38F5-43EB-BDB6-A57362D95625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChameleonConfig.Tests.Unit", "Tests\ChameleonConfig.Tests.Unit\ChameleonConfig.Tests.Unit.csproj", "{53D9A920-E837-4CC3-98FC-6109D8AF444E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +19,15 @@ Global
 		{7BF46FDF-0C85-4317-A609-495FAC9B3CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BF46FDF-0C85-4317-A609-495FAC9B3CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BF46FDF-0C85-4317-A609-495FAC9B3CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53D9A920-E837-4CC3-98FC-6109D8AF444E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53D9A920-E837-4CC3-98FC-6109D8AF444E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53D9A920-E837-4CC3-98FC-6109D8AF444E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53D9A920-E837-4CC3-98FC-6109D8AF444E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{53D9A920-E837-4CC3-98FC-6109D8AF444E} = {63373319-38F5-43EB-BDB6-A57362D95625}
 	EndGlobalSection
 EndGlobal
