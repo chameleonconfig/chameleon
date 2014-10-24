@@ -25,6 +25,11 @@
 ._*
 Thumbs.db
 
+# Dev generated #
+#################
+*.ncrunchsolution
+*.ncrunchproject
+
 # Directories #
 ###############
 obj/

@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeExtensions.cs" />
     <Compile Include="ConfigSectionAttribute.cs" />
     <Compile Include="ConfigSettingAttribute.cs" />
     <Compile Include="IConfigProvider.cs" />

@@ -2,6 +2,7 @@
 
 namespace ChameleonConfig
 {
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class ConfigSectionAttribute : Attribute
     {
         private readonly string _name;
