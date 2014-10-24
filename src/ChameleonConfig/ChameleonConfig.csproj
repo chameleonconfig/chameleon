@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,12 +41,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConfig\AppSettingsConfigProvider.cs" />
+    <Compile Include="AppConfig\NameValueSection.cs" />
     <Compile Include="AttributeExtensions.cs" />
+    <Compile Include="ConfigException.cs" />
     <Compile Include="ConfigSectionAttribute.cs" />
     <Compile Include="ConfigSettingAttribute.cs" />
+    <Compile Include="Resources\ErrorMessageProvider.cs" />
+    <Compile Include="Resources\IErrorMessageProvider.cs" />
+    <Compile Include="Resources\Errors.en.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.en.resx</DependentUpon>
+    </Compile>
     <Compile Include="IConfigProvider.cs" />
     <Compile Include="IConfigService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Errors.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Errors.fr.resx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
