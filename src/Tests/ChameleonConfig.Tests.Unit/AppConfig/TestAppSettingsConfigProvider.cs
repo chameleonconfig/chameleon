@@ -1,5 +1,4 @@
 ﻿using ChameleonConfig.AppConfig;
-using ChameleonConfig.Resources;
 using NUnit.Framework;
 
 namespace ChameleonConfig.Tests.Unit.AppConfig
@@ -11,7 +10,7 @@ namespace ChameleonConfig.Tests.Unit.AppConfig
         public void TestDefaultAppSettingsFound()
         {
             // Setup
-            var provider = new AppSettingsConfigProvider(new ErrorMessageProvider("en"));
+            var provider = new AppSettingsConfigProvider();
 
             // Execute
             object result;
@@ -26,7 +25,7 @@ namespace ChameleonConfig.Tests.Unit.AppConfig
         public void TestDefaultAppSettingsFoundWrongType()
         {
             // Setup
-            var provider = new AppSettingsConfigProvider(new ErrorMessageProvider("en"));
+            var provider = new AppSettingsConfigProvider();
             object result;
 
             // Execute and Assert
@@ -37,7 +36,7 @@ namespace ChameleonConfig.Tests.Unit.AppConfig
         public void TestDefaultAppSettingsNotFound()
         {
             // Setup
-            var provider = new AppSettingsConfigProvider(new ErrorMessageProvider("en"));
+            var provider = new AppSettingsConfigProvider();
 
             // Execute
             object result;
@@ -46,6 +45,28 @@ namespace ChameleonConfig.Tests.Unit.AppConfig
             // Assert
             Assert.IsFalse(found);
             Assert.That(result, Is.EqualTo(null));
+        }
+
+        [Test]
+        public void TestSectionHandlingWithService()
+        {
+            // Setup
+            var provider = new AppSettingsConfigProvider();
+            var service = new ConfigService();
+            service.AddConfigProvider(provider);
+
+            // Execute
+            var config = service.Get<SomeSettingsConfig>();
+
+            // Assert
+            Assert.That(config, Is.Not.Null);
+            Assert.That(config.PropertyOne, Is.EqualTo(1));
+        }
+
+        [ConfigSection("someSettings")]
+        private class SomeSettingsConfig
+        {
+            public int PropertyOne { get; set; }
         }
     }
 }

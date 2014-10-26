@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
+using System.Globalization;
 using ChameleonConfig.Resources;
 
 namespace ChameleonConfig.AppConfig
@@ -21,9 +22,13 @@ namespace ChameleonConfig.AppConfig
             }
         }
 
-        public AppSettingsConfigProvider(IErrorMessageProvider errorMessageProvider)
+        public AppSettingsConfigProvider() : this(CultureInfo.GetCultureInfoByIetfLanguageTag("en"))
         {
-            _errorMessageProvider = errorMessageProvider;
+        }
+
+        internal AppSettingsConfigProvider(CultureInfo culture)
+        {
+            _errorMessageProvider = new ErrorMessageProvider(culture.IetfLanguageTag);
         }
 
         public bool TryGetValue(Type type, string section, string setting, out object value)
@@ -52,15 +57,14 @@ namespace ChameleonConfig.AppConfig
 
             if (nvs != null)
             {
-                foreach (var key in nvs.Settings.AllKeys)
-                {
-                    if (string.Equals(key, setting, StringComparison.OrdinalIgnoreCase))
-                    {
-                        var configValue = nvs.Settings[key].Value;
-                        value = ConvertSetting(type, section, setting, configValue);
+                var element = nvs.Elements[setting];
 
-                        return true;
-                    }
+                if (element != null)
+                {
+                    var configValue = element.Value;
+                    value = ConvertSetting(type, section, setting, configValue);
+
+                    return true;
                 }
             }
 

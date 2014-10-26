@@ -4,7 +4,7 @@ using System.Resources;
 
 namespace ChameleonConfig.Resources
 {
-    public class ErrorMessageProvider : IErrorMessageProvider
+    internal class ErrorMessageProvider : IErrorMessageProvider
     {
         private readonly ResourceManager _resourceManager;
         private readonly CultureInfo _culture;

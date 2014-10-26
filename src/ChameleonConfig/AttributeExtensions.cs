@@ -5,43 +5,45 @@ namespace ChameleonConfig
 {
     public static class AttributeExtensions
     {
-        public static bool TryGetAttribute(this Type type, out ConfigSectionAttribute attribute)
+        public static bool TryGetAttribute<T>(this Type type, out T attribute)
+            where T : Attribute
         {
             if (type == null)
             {
-                attribute = null;
+                attribute = default(T);
                 return false;
             }
 
-            var attributes = type.GetCustomAttributes(typeof(ConfigSectionAttribute), false);
+            var attributes = type.GetCustomAttributes(typeof(T), false);
 
             if (attributes.Length == 0)
             {
-                attribute = null;
+                attribute = default(T);
                 return false;
             }
 
-            attribute = (ConfigSectionAttribute) attributes[0];
+            attribute = (T) attributes[0];
             return true;
         }
 
-        public static bool TryGetAttribute(this PropertyInfo type, out ConfigSettingAttribute attribute)
+        public static bool TryGetAttribute<T>(this PropertyInfo type, out T attribute)
+            where T : Attribute
         {
             if (type == null)
             {
-                attribute = null;
+                attribute = default(T);
                 return false;
             }
 
-            var attributes = type.GetCustomAttributes(typeof(ConfigSettingAttribute), false);
+            var attributes = type.GetCustomAttributes(typeof(T), false);
 
             if (attributes.Length == 0)
             {
-                attribute = null;
+                attribute = default(T);
                 return false;
             }
 
-            attribute = (ConfigSettingAttribute)attributes[0];
+            attribute = (T)attributes[0];
             return true;
         }
     }

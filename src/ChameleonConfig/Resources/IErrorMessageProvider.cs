@@ -2,7 +2,7 @@
 
 namespace ChameleonConfig.Resources
 {
-    public interface IErrorMessageProvider
+    internal interface IErrorMessageProvider
     {
         string ConfigProviderTypeNotProvided(string section, string setting);
 
